@@ -1,1 +1,1 @@
-export { IBConnectorClient } from './ib-connector-client';
+export { Knime } from './knime';

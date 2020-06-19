@@ -1,2 +1,3 @@
-# knime-ts
+# KNIME TS
+
 Launch headless KNIME workspace.
