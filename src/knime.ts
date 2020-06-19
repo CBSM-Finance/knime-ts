@@ -8,7 +8,15 @@ export class Knime {
    * @param workflowName workflow to run
    * @param addditionalArgs override existing args or add new ones
    */
-  run(workflowName: string, addditionalArgs: string[]) {
+  run({
+    workflowName,
+    addditionalArgs,
+    callback,
+  }: {
+    workflowName: string;
+    addditionalArgs: string[];
+    callback: (error: Error, stdout: string | Buffer, stderr: string | Buffer) => void;
+  }) {
     const workflowFullPath = this.workspacePath + workflowName;
     const args = [
       `-nosplash`,
@@ -25,9 +33,7 @@ export class Knime {
         cwd: this.knimePath,
         windowsHide: true,
       },
-      (err) => {
-        console.log('out', err);
-      },
+      callback,
     );
   }
 }
